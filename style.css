@@ -9,7 +9,11 @@ body {
 }
 
 h1 {
+<<<<<<< HEAD
 	font-size: 2.3em;
+=======
+	font-size: 2.4em;
+>>>>>>> e5ef2446fe73d8ad68634e8eacf8cd31659a4031
 	line-height: 1.3em;
 	margin: 15px 0;
 	text-align: center;
@@ -32,6 +36,7 @@ img {
 	padding-top: 10px;
 }
 
+<<<<<<< HEAD
 .divAboutUs{
 	float: left;
 	padding: 15px 0 0 20px;
@@ -44,6 +49,8 @@ img {
 	float: right;
 }
 
+=======
+>>>>>>> e5ef2446fe73d8ad68634e8eacf8cd31659a4031
 #main-header {
 	background: #333;
 	color: white;
