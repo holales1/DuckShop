@@ -32,6 +32,18 @@ img {
 	padding-top: 10px;
 }
 
+.divAboutUs{
+	float: left;
+	padding: 15px 0 0 20px;
+	width: 40%;
+	word-wrap: break-word;
+}
+
+.imgShop{
+	width: 55%;
+	float: right;
+}
+
 #main-header {
 	background: #333;
 	color: white;
