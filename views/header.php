@@ -14,7 +14,7 @@
 			<ul>
 				<li><a href="home.php">Home</a></li>
 				<li><a href="aboutUs.php">About Us</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="contact.php">Contact</a></li>
 			</ul>
 		</nav><!-- / nav -->
 	</header><!-- / #main-header -->
