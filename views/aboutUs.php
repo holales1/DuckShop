@@ -16,7 +16,7 @@ $db_handle = new DBController();
         <h2>Address</h2>
         <div>
             <?php
-                $about_us = $db_handle->runQuery("SELECT * FROM company");
+                
                 echo $about_us[0]['Address']; 
             ?>
         </div>
@@ -24,7 +24,7 @@ $db_handle = new DBController();
         <h2>Phone number</h2>
         <div>
             <?php
-                $about_us = $db_handle->runQuery("SELECT * FROM company");
+                
                 echo $about_us[0]['phoneNumber']; 
             ?>
         </div>
