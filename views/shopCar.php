@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('header.php');
 require_once('../db/connection.php');
 $db_handle = new DBController();
@@ -9,17 +10,18 @@ switch($_GET["action"]) {
 	case "add":
 
 		if(!empty($_POST["quantity"])) {
-			$productByCode = $db_handle->runQuery("SELECT * FROM products WHERE code='" . $_GET["code"] . "'");
-			$itemArray = array($productByCode[0]["code"]=>array(
-			    'name'=>$productByCode[0]["name"],
-                'code'=>$productByCode[0]["code"],
+			$productByCode = $db_handle->runQuery("SELECT * FROM products WHERE ProductID='" . $_GET["ProductID"] . "'");
+			$itemArray = array($productByCode[0]["ProductID"]=>array(
+			    'description'=>$productByCode[0]["description"],
+                'ProductID'=>$productByCode[0]["ProductID"],
+                'image'=>$productByCode[0]["image"],
                 'quantity'=>$_POST["quantity"],
                 'price'=>$productByCode[0]["price"]));
 			
 			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
+				if(in_array($productByCode[0]["ProductID"],array_keys($_SESSION["cart_item"]))) {
 					foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["code"] == $k) {
+							if($productByCode[0]["ProductID"] == $k) {
 								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
 									$_SESSION["cart_item"][$k]["quantity"] = 0;
 								}
@@ -38,7 +40,7 @@ switch($_GET["action"]) {
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["code"] == $k)
+					if($_GET["ProductID"] == $k)
 						unset($_SESSION["cart_item"][$k]);				
 					if(empty($_SESSION["cart_item"]))
 						unset($_SESSION["cart_item"]);
@@ -47,7 +49,7 @@ switch($_GET["action"]) {
 	break;
 //Empty the entire cart
 	case "empty":
-		unset($_SESSION["cart_item"]);
+        unset($_SESSION["cart_item"]);
 	break;	
 }
 }
@@ -61,7 +63,7 @@ switch($_GET["action"]) {
     </head>
     <body>
         <div id="shopping-cart">
-            <div class="heading">Shopping Cart <a id="emptyBtn" href="index.php?action=empty">Empty Cart</a></div>
+            <div class="heading">Shopping Cart <a id="emptyBtn" href="shopCar.php?action=empty">Empty Cart</a></div>
             <?php
             //Reset total cost to do recalc
             if(isset($_SESSION["cart_item"])){
@@ -70,25 +72,29 @@ switch($_GET["action"]) {
             <table cellpadding="10" cellspacing="1">
                 <tbody>
                     <tr>
-                        <th><strong>Name</strong></th>
-                        <th><strong>Code</strong></th>
-                        <th><strong>Quantity</strong></th>
-                        <th><strong>Price</strong></th>
-                        <th><strong>Action</strong></th>
+                        <th><strong>Name  </strong></th>
+                        <th><strong>Image  </strong></th>
+                        <th><strong>Code  </strong></th>
+                        <th><strong>Quantity  </strong></th>
+                        <th><strong>Price  </strong></th>
+                        <th><strong>Action  </strong></th>
                     </tr>	
                     <?php		
                         foreach ($_SESSION["cart_item"] as $item){
                             ?>
                                     <tr>
-                                    <td><strong><?php echo $item["name"]; ?></strong></td>
-                                    <td><?php echo $item["code"]; ?></td>
+                                    <td><strong><?php echo $item["description"]; ?></strong></td>
+                                    <td> <img src="../img/<?php echo $item["image"]; ?>"></td>
+                                    <td><?php echo $item["ProductID"]; ?></td>
                                     <td><?php echo $item["quantity"]; ?></td>
                                     <td><?php echo $item["price"]." DKK"; ?></td>
-                                    <td><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="removeBtn">Remove</a></td>
+                                    <td><a href="shopCar.php?action=remove&ProductID=<?php echo $item["ProductID"]; ?>" class="removeBtn">Remove</a></td>
                                     </tr>
                                     <?php
                             $item_total += ($item["price"]*$item["quantity"]);
+                            
                             }
+                            
                             ?>
 
                     <tr>

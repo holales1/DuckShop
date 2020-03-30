@@ -12,7 +12,7 @@ $db_handle = new DBController();
             foreach($product_array as $aNumber=> $value){
 	?>
     <div class="product-item">
-        <form method="post" action="index.php?action=add&code=<?php echo $product_array[$aNumber]["ProductID"]; ?>">
+        <form method="post" action="shopCar.php?action=add&ProductID=<?php echo $product_array[$aNumber]["ProductID"]; ?>">
             <div class="product-image">
                 <img src="../img/<?php echo $product_array[$aNumber]["image"]; ?>">
             </div>
