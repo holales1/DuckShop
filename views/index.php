@@ -5,6 +5,7 @@ $db_handle = new DBController();
 ?>
 
 <div>
+    <div class="productTitle">Daily special offer</div>
 	<div class="productTitle">Products</div>
 	<?php
         $product_array = $db_handle->runQuery("SELECT * FROM products ORDER BY ProductID ASC");

@@ -8,7 +8,7 @@ $db_handle = new DBController();
         <h2>About US</h2>
         <div>
             <?php
-                $about_us = $db_handle->runQuery("SELECT * FROM company");
+                $about_us = $db_handle->runQuery("SELECT * FROM companies");
                 echo $about_us[0]['description']; 
             ?>
         </div>
