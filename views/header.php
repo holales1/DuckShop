@@ -19,12 +19,15 @@ if(!isset($_COOKIE["PHPSESSID"]))
 	<header id="main-header">
 		<div id="logo-header" href="#">
 			<h2 class="site-name">Duck Shop</h2>
+			
 		</div> <!-- / #logo-header -->
 		<nav>
 			<ul>
 				<li><a href="index.php">Home</a></li>
 				<li><a href="aboutUs.php">About Us</a></li>
 				<li><a href="contact.php">Contact</a></li>
+				<li><a href="news.php">News</a></li>
+				<li><a href="login.php" class="material-icons shopCar">account_circle</a></li>
 				<li><a href="shopCar.php" class="material-icons shopCar" >shopping_cart</a></li>
 			</ul>
 		</nav><!-- / nav -->

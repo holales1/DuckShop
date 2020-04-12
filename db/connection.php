@@ -29,5 +29,20 @@ class DBController {
 		$rowcount = mysqli_num_rows($result);
 		return $rowcount;	
 	}
+
+	function escapeSql($stringEscape){
+		$escapedString=trim(mysqli_real_escape_string($this->conn, $stringEscape));
+		return $escapedString;
+	}
+
+	function selectLogin($query){
+		$result  = mysqli_query($this->conn,$query);
+		return $result;
+	}
+
+	function insertRow($query){
+		$result = mysqli_query($this->conn, $query);
+		return $result;
+	}
 }
 ?>
