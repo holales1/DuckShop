@@ -2,13 +2,25 @@
 require_once('header.php');
 require_once('../db/connection.php');
 $db_handle = new DBController();
+
 ?>
 
 <div>
-    <div class="productTitle">Daily special offer</div>
+    <div>
         <?php
-            $dayOfWeek = date("l", strtotime(date("Y-m-d")));
-            $offer = $db_handle->runQuery("SELECT percentage, ProductID FROM product_of_the_day WHERE dayOfWeek='$dayOfWeek'");
+        if(isset($_SESSION['message'])){
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+        }
+        ?>
+    </div>
+    <?php
+        $dayOfWeek = date("l", strtotime(date("Y-m-d")));
+        $offer = $db_handle->runQuery("SELECT percentage, ProductID FROM product_of_the_day WHERE dayOfWeek='$dayOfWeek'");
+        if($offer!=null){  
+    ?>
+    <div class="productTitle">Daily special offer</div>
+        <?php    
             $ProductID=$offer[0]["ProductID"];
             $product_of_day = $db_handle->runQuery("SELECT * FROM products WHERE ProductID= $ProductID");
         ?>
@@ -20,7 +32,8 @@ $db_handle = new DBController();
                 <div>
                     <strong><?php echo $product_of_day[0]["description"]; ?></strong>
                 </div>
-                <div class="product-price"><?php
+                <div class="product-price">
+                <?php
                     $price=intval($product_of_day[0]["price"]);
                     $finalPrice=$price/100*(100-intval($offer[0]["percentage"]));
                     echo $finalPrice.".00 DKK"; 
@@ -32,6 +45,12 @@ $db_handle = new DBController();
                 </div>
             </form>
         </div>
+        <?php
+
+            }else{
+
+            }
+        ?>
         
 	<div class="productTitle">Products</div>
 	<?php

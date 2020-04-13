@@ -48,7 +48,7 @@ switch($_GET["action"]) {
 		}
 	break;
 //Empty the entire cart
-	case "empty":
+    case "empty":
         unset($_SESSION["cart_item"]);
 	break;	
 }

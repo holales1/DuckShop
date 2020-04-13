@@ -1,5 +1,5 @@
 <?php
-if(!isset($_COOKIE["PHPSESSID"]))
+if(session_status() == PHP_SESSION_NONE)
 {
   session_start();
 }
