@@ -44,5 +44,6 @@ class DBController {
 		$result = mysqli_query($this->conn, $query);
 		return $result;
 	}
+
 }
 ?>
