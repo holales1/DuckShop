@@ -129,7 +129,17 @@ $db_handle = new DBController();
         </form>
         <div>
             <form method="post" action="deleteProduct.php?ProductID=<?php echo $product_array[$aNumber]["ProductID"]; ?>">
-                <input type="submit" value="Delete" class="addBtn" />     
+                <?php
+                    if($product_array[$aNumber]["isAvaliable"]=="0"){
+                ?>
+                        <input type="submit" value="Delete" class="addBtn" />
+                <?php
+                    }else{
+                ?>
+                        <input type="submit" value="Add" class="addBtn" />
+                <?php
+                    }
+                ?>
             </form>
         </div>
     </div>

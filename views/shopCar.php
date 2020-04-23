@@ -106,5 +106,19 @@ switch($_GET["action"]) {
                 }
             ?>
         </div>
+        <div>
+            <?php
+                if(isset($_SESSION["cart_item"]) && isset($_SESSION['isAdmin'])){
+                    if($_SESSION['isAdmin']==0){
+            ?>
+            <form method="post" action="addOrder.php">
+            
+                <input type="submit" value="Order Product" class="addBtn">
+            </form>
+            <?php
+                    }
+                }
+            ?>
+        </div>
     </body>
 </html>
