@@ -146,6 +146,14 @@ $db_handle = new DBController();
     <?php
             }
         }
+    ?>
+    <div>
+        <form method="post" action="newProduct.php">
+            <input type="submit" value="Add new product" class="addBtn" />
+        </form>
+    </div>
+    
+    <?php
     }
 	?>
 </div>
