@@ -1,9 +1,15 @@
 <?php
 class DBController {
-	private $host = "ec2-54-217-204-34.eu-west-1.compute.amazonaws.com";
-	private $user = "oyijacadevrbil";
-	private $password = "30314420914279ba0cbc537c5a2f51049eb424ff19572feb28eff4e893c19209";
-	private $database = "df44e8a8hptq90";
+	/*private $host = "localhost";
+	private $user = "alex";
+	private $password = "1234";
+	private $database = "duckshop";
+	private $conn;*/
+
+	private $host = "eu-cdbr-west-03.cleardb.net";
+	private $user = "beb80e5927b852";
+	private $password = "acee1cef";
+	private $database = "heroku_09703ad4f880332";
 	private $conn;
 	
 	function __construct() {
@@ -12,6 +18,13 @@ class DBController {
 	
 	function connectDB() {
 		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
+		/*try {
+			$conn = new PDO("pgsql:host=$this->host;dbname=$this->database;charset=utf8", $this->user,$this->password);
+			return $conn;
+		} catch (PDOException $err) {
+			echo "Error!: " . $err->getMessage() . "<br/>";
+			die();
+		}*/
 		return $conn;
 	}
 	
