@@ -52,7 +52,7 @@ $db_handle = new DBController();
             ?>
             <form method="post" action="shopCar.php?action=add&ProductID=<?php echo $product_of_day[0]["ProductID"]; ?>">
                 <div class="product-image">
-                    <img src="../img/<?php echo $product_of_day[0]["image"]; ?>">
+                    <img src="/img/<?php echo $product_of_day[0]["image"]; ?>">
                 </div>
                 <div>
                     <strong><?php echo $product_of_day[0]["description"]; ?></strong>
