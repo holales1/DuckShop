@@ -100,7 +100,7 @@ $db_handle = new DBController();
             </div>
             <div>
             
-                <input type="text" name="quantity" value="1" size="2" />
+                <input type="number" name="quantity" value="1" size="2" max="10"/>
                 <input type="submit" value="Add to cart" class="addBtn" />
             </div>
         </form>

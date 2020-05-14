@@ -12,5 +12,11 @@ $message=$_POST['message'];
 $regexp="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
 
 $body="$message\n\nE-mail: $email";
-mail($mymail,$subject,$body,"From: $email\n");
-echo "Thanks for your E-mail";
+if (preg_match($regexp,$email)) {
+    mail($mymail,$subject,$body,"From: $email\n");
+    $_SESSION['message'] = "Message not sended.";
+    redirect_to("contact.php");
+}else{
+    $_SESSION['message'] = "Message not sended.";
+    redirect_to("contact.php");
+}
